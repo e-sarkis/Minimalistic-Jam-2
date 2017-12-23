@@ -21,7 +21,7 @@ public class PlayerAimController : MonoBehaviour
 		{
 			reticleSpriteRenderer.enabled = true;
 			float zRot = Mathf.Atan2(moveController.axisInputDirection.x, -moveController.axisInputDirection.y) * Mathf.Rad2Deg;
-			aimReticle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
+			if (moveController.axisInputDirection != Vector2.zero) aimReticle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
 		}
 		if (Input.GetButtonUp("Aim")) reticleSpriteRenderer.enabled = false;
 	}
