@@ -16,7 +16,7 @@ public class OarAnimator : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetButton("Stroke"))
+		if (Input.GetButton("Stroke") && !Input.GetButton("Aim"))
 		{
 			spriteRenderer.sprite = spriteOarsStroke;
 		}
