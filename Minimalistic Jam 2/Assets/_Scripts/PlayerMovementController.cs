@@ -8,26 +8,26 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour 
 {
 	public float strokeForce = 10f;
-	[HideInInspector] public Vector2 axisInputDirection;
+	
+	private PlayerController playerController;
+	void Awake() { playerController = GetComponent<PlayerController>(); }
 
 	void Update()
 	{
-		axisInputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-		axisInputDirection.Normalize();
-		Debug.DrawRay(Vector3.zero, axisInputDirection, Color.white, 1);
+		Debug.DrawRay(Vector3.zero, playerController.axisInputDirection, Color.white, 1);
 
-		float zRot = Mathf.Atan2(axisInputDirection.x, -axisInputDirection.y) * Mathf.Rad2Deg;
+		float zRot = Mathf.Atan2(playerController.axisInputDirection.x, -playerController.axisInputDirection.y) * Mathf.Rad2Deg;
 
-		if (!Input.GetButton("Aim"))
+		if (!playerController.inputAim)
 		{
-			if (axisInputDirection != Vector2.zero) transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
-			if (Input.GetButtonDown("Stroke"))
+			if (playerController.axisInputDirection != Vector2.zero)
+			{
+				transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
+			}
+			if (playerController.inputStroke)
 			{
 				GetComponent<Rigidbody2D>().AddForce(transform.right * strokeForce);
 			}
 		}
-
-
-		
 	}
 }
