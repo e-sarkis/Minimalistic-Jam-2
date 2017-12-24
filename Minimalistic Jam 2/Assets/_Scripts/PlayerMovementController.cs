@@ -10,6 +10,7 @@ public class PlayerMovementController : MonoBehaviour
 	public float strokeForce = 10f;
 	
 	private PlayerController playerController;
+	
 	void Awake() { playerController = GetComponent<PlayerController>(); }
 
 	void Update()

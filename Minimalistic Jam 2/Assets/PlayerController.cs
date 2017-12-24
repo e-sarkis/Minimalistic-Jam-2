@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public bool inputAim		= false;
 	[HideInInspector] public bool inputFire		= false;
 	[HideInInspector] public Vector2 axisInputDirection;
-	public GameObject prefabPayload;
+	public GameObject prefabPayload;	// The Projectile the Player Fires
 
 	void Update()
 	{

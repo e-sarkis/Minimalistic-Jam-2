@@ -17,8 +17,7 @@ public class PlayerAimController : MonoBehaviour
 		reticleSpriteRenderer.enabled	= false;
 	}
 
-	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
 		if (playerController.inputAim)
 		{
@@ -29,6 +28,15 @@ public class PlayerAimController : MonoBehaviour
 				aimReticle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
 			}
 		}
-		if (playerController.inputFire) reticleSpriteRenderer.enabled = false;
+		if (playerController.inputFire)
+		{
+			reticleSpriteRenderer.enabled = false;
+			//FireProjectile();
+		}
 	}
+
+	// private void FireProjectile()
+	// {
+	// 	GameObject projectile = Instantiate(playerController.prefabPayload, transform.position, aimReticle.transform.rotation);
+	// }
 }
