@@ -31,12 +31,16 @@ public class PlayerAimController : MonoBehaviour
 		if (playerController.inputFire)
 		{
 			reticleSpriteRenderer.enabled = false;
-			//FireProjectile();
+			FireProjectile();
 		}
 	}
 
-	// private void FireProjectile()
-	// {
-	// 	GameObject projectile = Instantiate(playerController.prefabPayload, transform.position, aimReticle.transform.rotation);
-	// }
+	private void FireProjectile()
+	{
+	 	GameObject projectile = Instantiate(playerController.prefabPayload, transform.position, aimReticle.transform.rotation);
+		ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
+		projectileController.shooter = this.gameObject;
+		projectileController.direction = playerController.axisInputDirection;
+		projectileController.Launch();
+	}
 }
