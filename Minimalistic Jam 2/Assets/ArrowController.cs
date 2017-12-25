@@ -6,6 +6,12 @@ public class ArrowController : ProjectileController
 {
 	override public void Launch()
 	{ 
+		Collider shooterCollider2D = shooter.GetComponent<Collider>();
+		if (shooterCollider2D) 
+		{
+			Physics.IgnoreCollision(GetComponent<Collider>(), shooterCollider2D, true);
+			Physics.IgnoreCollision(shooterCollider2D, GetComponent<Collider>(), true);
+		}
 		rigidbody2D.velocity = direction * moveVelocity;
 	}
 
