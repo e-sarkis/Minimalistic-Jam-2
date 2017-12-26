@@ -6,21 +6,23 @@ public class OarAnimator : MonoBehaviour
 {
 	public Sprite spriteOarsRest;
 	public Sprite spriteOarsStroke;
+	PlayerController playerController;
 
 	private SpriteRenderer spriteRenderer;
 
 	void Awake()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		playerController = GetComponentInParent<PlayerController>();
 	}
 
 	void Update()
 	{
-		if (Input.GetButton("Stroke") && !Input.GetButton("Aim"))
+		if (playerController.inputStroke && !playerController.inputAim)
 		{
 			spriteRenderer.sprite = spriteOarsStroke;
 		}
-		if (Input.GetButtonUp("Stroke"))
+		if (Input.GetButtonUp(playerController.joyStr + "Stroke"))
 		{	
 			spriteRenderer.sprite = spriteOarsRest;
 		}

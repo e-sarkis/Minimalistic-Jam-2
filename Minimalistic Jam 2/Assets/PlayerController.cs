@@ -9,14 +9,30 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public bool inputFire		= false;
 	[HideInInspector] public Vector2 axisInputDirection;
 	public GameObject prefabPayload;	// The Projectile the Player Fires
+	[HideInInspector] public string joyStr;
+
+	// Temporary - Much to reside in GameController
+	public enum Joystick { Joy1, Joy2, Joy3, Joy4 };
+	private Dictionary<Joystick, string> joyNumToJoyInputStrings;
+
+	public Joystick joy = Joystick.Joy1;
+
+	void Awake()
+	{
+		// 	TEMP - Will exist in GameController
+		joyNumToJoyInputStrings = new Dictionary<Joystick, string>();
+		joyNumToJoyInputStrings.Add(Joystick.Joy1, "Joy1");
+
+		joyStr = joyNumToJoyInputStrings[joy];
+	}
 
 	void Update()
 	{
-		inputAim 	= Input.GetButton("Aim");
-		inputFire	= Input.GetButtonUp("Aim");
-		inputStroke	= Input.GetButtonDown("Stroke");
+		inputAim 	= Input.GetButton(joyStr + "Aim");
+		inputFire	= Input.GetButtonUp(joyStr + "Aim");
+		inputStroke	= Input.GetButtonDown(joyStr + "Stroke");
 
-		axisInputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		axisInputDirection = new Vector2(Input.GetAxis(joyStr + "Horizontal"), Input.GetAxis(joyStr + "Vertical"));
 		axisInputDirection.Normalize();
 	}
 }
