@@ -18,7 +18,7 @@ public class ProjectileController : MonoBehaviour
 	{
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		collider2D = GetComponent<Collider2D>();
-		if (collider2D) collider2D.enabled = false;
+		if (collider2D) collider2D.enabled = false; // Collisions Enabled during Launch
 	}
 
 	virtual public void Launch() {  }

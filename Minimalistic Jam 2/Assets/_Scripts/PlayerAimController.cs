@@ -21,16 +21,16 @@ public class PlayerAimController : MonoBehaviour
 	{
 		if (playerController.inputAim)
 		{
-			reticleSpriteRenderer.enabled = true;
+			reticleSpriteRenderer.enabled = true; // Show Reticle
 			float zRot = Mathf.Atan2(playerController.axisInputDirection.x, -playerController.axisInputDirection.y) * Mathf.Rad2Deg;
-			if (playerController.axisInputDirection != Vector2.zero)
+			if (playerController.axisInputDirection != Vector2.zero) // Is there actual axis input?
 			{
 				aimReticle.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRot - 90f));
 			}
-		}
+		} else { reticleSpriteRenderer.enabled = false; } // Hide Reticle
+		
 		if (playerController.inputFire)
 		{
-			reticleSpriteRenderer.enabled = false;
 			FireProjectile();
 		}
 	}
