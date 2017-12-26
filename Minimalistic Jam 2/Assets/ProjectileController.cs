@@ -18,7 +18,22 @@ public class ProjectileController : MonoBehaviour
 	{
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		collider2D = GetComponent<Collider2D>();
+		if (collider2D) collider2D.enabled = false;
 	}
 
 	virtual public void Launch() {  }
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		switch (other.gameObject.tag)
+		{
+			case "Player":
+				PlayerResponse();
+				break;
+			default:
+				break;
+		}
+	}
+
+	virtual public void PlayerResponse() { }
 }
