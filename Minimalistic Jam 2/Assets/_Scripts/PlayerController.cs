@@ -11,20 +11,11 @@ public class PlayerController : MonoBehaviour
 	public GameObject prefabPayload;	// The Projectile the Player Fires
 	[HideInInspector] public string joyStr;
 
-	// Temporary - Much to reside in GameController
-	public enum Joystick { Joy1, Joy2, Joy3, Joy4 };
-	private Dictionary<Joystick, string> joyNumToJoyInputStrings;
-
-	public Joystick joy = Joystick.Joy1;
+	public GameController.Joystick joy = GameController.Joystick.Joy1;
 
 	void Awake()
 	{
-		// 	TEMP - Will exist in GameController
-		joyNumToJoyInputStrings = new Dictionary<Joystick, string>();
-		joyNumToJoyInputStrings.Add(Joystick.Joy1, "Joy1");
-		joyNumToJoyInputStrings.Add(Joystick.Joy2, "Joy2");
-
-		joyStr = joyNumToJoyInputStrings[joy];
+		joyStr = GameController.Instance.GetJoystickInputString(joy);
 	}
 
 	void Update()
