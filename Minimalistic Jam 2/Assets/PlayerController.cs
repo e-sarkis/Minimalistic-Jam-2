@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 		// 	TEMP - Will exist in GameController
 		joyNumToJoyInputStrings = new Dictionary<Joystick, string>();
 		joyNumToJoyInputStrings.Add(Joystick.Joy1, "Joy1");
+		joyNumToJoyInputStrings.Add(Joystick.Joy2, "Joy2");
 
 		joyStr = joyNumToJoyInputStrings[joy];
 	}
