@@ -27,7 +27,9 @@ public class PlayerMovementController : MonoBehaviour
 			}
 			if (playerController.inputStroke)
 			{
-				GetComponent<Rigidbody2D>().AddForce(transform.right * strokeForce);
+				Rigidbody2D rb2d = GetComponent<Rigidbody2D>();
+				rb2d.angularVelocity = 0;
+				rb2d.AddForce(transform.right * strokeForce);
 			}
 		}
 	}
