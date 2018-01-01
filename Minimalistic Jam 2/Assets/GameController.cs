@@ -18,9 +18,7 @@ public class GameController : MonoBehaviour
 	private const int _maxPlayers 	= 2; 	// Max # Players that can play In-Game
 	private const int _minPlayers 	= 2; 	// Min # Players required to play
 	private Dictionary<int, int> _playerNumsToScores;
-    public bool isGameOver = false;
-	// Game Scene Features
-	public List<GameObject> respawnLocations;
+    [HideInInspector] public bool isGameOver = false;
 
     private void Awake()
     {
