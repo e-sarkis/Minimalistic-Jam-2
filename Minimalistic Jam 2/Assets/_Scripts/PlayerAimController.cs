@@ -29,7 +29,7 @@ public class PlayerAimController : MonoBehaviour
 			}
 		} else { reticleSpriteRenderer.enabled = false; } // Hide Reticle
 		
-		if (playerController.inputFire)
+		if (playerController.inputFire && playerController.axisInputDirection != Vector2.zero)
 		{
 			FireProjectile();
 		}
