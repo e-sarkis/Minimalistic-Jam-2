@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,8 @@ public class GameController : MonoBehaviour
 	public int totalInGamePlayers 	= 2;	// Total # Players In-Game, dead or alive
 	private const int _maxPlayers 	= 2; 	// Max # Players that can play In-Game
 	private const int _minPlayers 	= 2; 	// Min # Players required to play
-	private Dictionary<int, int> _playerNumsToScores; 
+	private Dictionary<int, int> _playerNumsToScores;
+    public bool isGameOver = false;
 	// Game Scene Features
 	public List<GameObject> respawnLocations;
 
@@ -46,6 +48,13 @@ public class GameController : MonoBehaviour
 		Debug.Log("Player " + playerNum + " scores! Total: " + _playerNumsToScores[playerNum]);
 		// TODO - Update ingame UI of Player in question
 		// Display Prompt for Rematch or Reset
+		UIMenuController.Instance.ShowMenu();
 		//SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload Scene
 	}
+
+	public string GetScoreText()
+    {
+        string result = _playerNumsToScores[(int) PlayerNum.P1] + " - " + _playerNumsToScores[(int) PlayerNum.P2];
+		return result;
+    }
 }
