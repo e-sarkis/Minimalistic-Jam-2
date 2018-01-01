@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector] public string joyStr;
 
 	public GameController.Joystick joy = GameController.Joystick.Joy1;
+	public GameController.PlayerNum playerNum = GameController.PlayerNum.P1;
 
 	void Start()
 	{

@@ -20,6 +20,8 @@ public class ArrowController : ProjectileController
 
 	override public void PlayerResponse()
 	{
+		// Score Points
+		GameController.Instance.Score((int) shooter.GetComponent<PlayerController>().playerNum);
 		Destroy(gameObject); 
 	}
 }

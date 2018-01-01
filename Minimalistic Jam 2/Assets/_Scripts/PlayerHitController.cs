@@ -6,7 +6,6 @@ public class PlayerHitController : MonoBehaviour
 {
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log("SUP");
 		switch (other.gameObject.tag)
 		{
 			case "Projectile":

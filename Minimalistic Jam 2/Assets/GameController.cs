@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 	public enum Joystick { Joy1, Joy2 };	// Can scale if Inputs exist in InputManager
 	private Dictionary<Joystick, string> _joyEnumToJoyInputStrings; // e.x. "Joy1" in "Joy1Horizontal"
 	// Game State Variables
+	public enum PlayerNum { P1, P2 };
 	public int totalInGamePlayers 	= 2;	// Total # Players In-Game, dead or alive
 	private const int _maxPlayers 	= 2; 	// Max # Players that can play In-Game
 	private const int _minPlayers 	= 2; 	// Min # Players required to play
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour
 	public void Score(int playerNum)
 	{
 		_playerNumsToScores[playerNum]++;
+		Debug.Log("Player " + playerNum + " scores! Total: " + _playerNumsToScores[playerNum]);
 		// TODO - Update ingame UI of Player in question
 	}
 }
