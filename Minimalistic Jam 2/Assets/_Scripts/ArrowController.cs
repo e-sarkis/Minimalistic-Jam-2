@@ -23,6 +23,6 @@ public class ArrowController : ProjectileController
 
 	override public void PlayerResponse()
 	{
-		Destroy(this.gameObject); 
+		Destroy(gameObject); 
 	}
 }
