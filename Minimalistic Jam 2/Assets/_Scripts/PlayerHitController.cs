@@ -18,6 +18,6 @@ public class PlayerHitController : MonoBehaviour
 
 	void ProjectileResponse(GameObject projectile)
 	{
-		Destroy(this.gameObject);	// TODO - Integrate with GameController
+		Destroy(gameObject);	// TODO - Integrate with GameController
 	}
 }

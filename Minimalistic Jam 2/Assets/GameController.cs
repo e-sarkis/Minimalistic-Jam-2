@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
@@ -16,6 +17,8 @@ public class GameController : MonoBehaviour
 	private const int _maxPlayers 	= 2; 	// Max # Players that can play In-Game
 	private const int _minPlayers 	= 2; 	// Min # Players required to play
 	private Dictionary<int, int> _playerNumsToScores; 
+	// Game Scene Features
+	public List<GameObject> respawnLocations;
 
     private void Awake()
     {
@@ -42,5 +45,7 @@ public class GameController : MonoBehaviour
 		_playerNumsToScores[playerNum]++;
 		Debug.Log("Player " + playerNum + " scores! Total: " + _playerNumsToScores[playerNum]);
 		// TODO - Update ingame UI of Player in question
+		// Display Prompt for Rematch or Reset
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload Scene
 	}
 }
