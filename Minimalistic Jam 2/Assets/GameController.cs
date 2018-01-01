@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
 		Mathf.Clamp(totalInGamePlayers, _minPlayers, _maxPlayers);
 		_playerNumsToScores = new Dictionary<int, int>();
 		for (int i = 0; i < totalInGamePlayers; i++) _playerNumsToScores.Add(i, 0);
+		DontDestroyOnLoad(transform.parent.transform.gameObject);
     }
 
 	public string GetJoystickInputString(Joystick joy)
@@ -45,7 +46,6 @@ public class GameController : MonoBehaviour
 	public void Score(int playerNum)
 	{
 		_playerNumsToScores[playerNum]++;
-		Debug.Log("Player " + playerNum + " scores! Total: " + _playerNumsToScores[playerNum]);
 		// TODO - Update ingame UI of Player in question
 		// Display Prompt for Rematch or Reset
 		UIMenuController.Instance.ShowMenu();
@@ -60,11 +60,15 @@ public class GameController : MonoBehaviour
 
 	public void Reset()
 	{
-
+		isGameOver = false;
+		_playerNumsToScores[(int) PlayerNum.P1] = 0;
+		_playerNumsToScores[(int) PlayerNum.P2] = 0;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void Rematch()
 	{
-		
+		isGameOver = false;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
