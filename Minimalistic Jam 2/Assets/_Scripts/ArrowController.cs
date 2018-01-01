@@ -24,4 +24,9 @@ public class ArrowController : ProjectileController
 		GameController.Instance.Score((int) shooter.GetComponent<PlayerController>().playerNum);
 		Destroy(gameObject); 
 	}
+
+	override public void BoundaryResponse() 
+	{
+		Destroy(gameObject); 
+	}
 }

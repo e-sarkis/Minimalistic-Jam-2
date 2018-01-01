@@ -30,10 +30,14 @@ public class ProjectileController : MonoBehaviour
 			case "Player":
 				PlayerResponse();
 				break;
+			case "Boundary":
+				BoundaryResponse();
+				break;
 			default:
 				break;
 		}
 	}
 
 	virtual public void PlayerResponse() { }
+	virtual public void BoundaryResponse() { }
 }
