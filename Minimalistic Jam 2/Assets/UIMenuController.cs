@@ -14,7 +14,24 @@ public class UIMenuController : MonoBehaviour
 	public GameObject OptionResetDisplayGameObject;
 	public GameObject BlackoutDisplayGameObject;
 
+	public Color activeMenuElementColor;
+	public Color inactiveMenuElementColor;
+
 	private GameObject _optionCurrentSelection;
+
+	// Used to determine staleness of Vertical axis input
+	private bool _inputReturnedToZero = true;
+
+	void Update()
+	{
+		if (!GameController.Instance.isGameOver) return;
+		
+		if (Mathf.Abs(Input.GetAxisRaw("Vertical")) > 0 && _inputReturnedToZero)
+		{
+			SwapActive();
+		}
+		_inputReturnedToZero = Input.GetAxisRaw("Vertical") == 0;
+	}
 
 	public void ShowMenu()
 	{
@@ -27,6 +44,10 @@ public class UIMenuController : MonoBehaviour
 		ScoreDisplayText.text = GameController.Instance.GetScoreText();
 		// Activate Blackout
 		BlackoutDisplayGameObject.GetComponent<Image>().enabled = true;
+		// Set Current Selection
+		_optionCurrentSelection = OptionRematchDisplayGameObject;
+		OptionResetDisplayGameObject.GetComponent<Outline>().effectColor = inactiveMenuElementColor;
+		_optionCurrentSelection.GetComponent<Outline>().effectColor = activeMenuElementColor;
 	}
 
 	void Awake()
@@ -34,5 +55,23 @@ public class UIMenuController : MonoBehaviour
 		// Singleton Initialization
         if (_instance != null && _instance != this) { Destroy(gameObject); }
 		else { _instance = this; }
+	}
+
+	void SwapActive()
+	{
+		_optionCurrentSelection.GetComponent<Outline>().effectColor = inactiveMenuElementColor;
+		if (_optionCurrentSelection == OptionRematchDisplayGameObject)
+		{
+			_optionCurrentSelection = OptionResetDisplayGameObject;
+		} else
+		{
+			_optionCurrentSelection = OptionRematchDisplayGameObject;
+		}
+		_optionCurrentSelection.GetComponent<Outline>().effectColor = activeMenuElementColor;
+	}
+
+	void SelectOption()
+	{
+
 	}
 }

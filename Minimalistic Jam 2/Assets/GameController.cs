@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
 		// TODO - Update ingame UI of Player in question
 		// Display Prompt for Rematch or Reset
 		UIMenuController.Instance.ShowMenu();
-		//SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload Scene
+		isGameOver = true;
 	}
 
 	public string GetScoreText()
@@ -57,4 +57,14 @@ public class GameController : MonoBehaviour
         string result = _playerNumsToScores[(int) PlayerNum.P1] + " - " + _playerNumsToScores[(int) PlayerNum.P2];
 		return result;
     }
+
+	public void Reset()
+	{
+
+	}
+
+	public void Rematch()
+	{
+		
+	}
 }
