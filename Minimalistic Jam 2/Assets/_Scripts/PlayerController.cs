@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
-	[HideInInspector] public bool inputStroke	= false;
-	[HideInInspector] public bool inputAim		= false;
-	[HideInInspector] public bool inputFire		= false;
+	[HideInInspector] public bool inputStroke		= false;
+	[HideInInspector] public bool inputStrokeHeld	= false;
+	[HideInInspector] public bool inputAim			= false;
+	[HideInInspector] public bool inputFire			= false;
+	
 	[HideInInspector] public Vector2 axisInputDirection;
 	public GameObject prefabPayload;	// The Projectile the Player Fires
 	[HideInInspector] public string joyStr;
@@ -21,9 +23,10 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		inputAim 	= Input.GetButton(joyStr + "Aim");
-		inputFire	= Input.GetButtonUp(joyStr + "Aim");
-		inputStroke	= Input.GetButtonDown(joyStr + "Stroke");
+		inputAim 		= Input.GetButton(joyStr + "Aim");
+		inputFire		= Input.GetButtonUp(joyStr + "Aim");
+		inputStroke		= Input.GetButtonDown(joyStr + "Stroke");
+		inputStrokeHeld = Input.GetButton(joyStr + "Stroke");
 
 		axisInputDirection = new Vector2(Input.GetAxis(joyStr + "Horizontal"), Input.GetAxis(joyStr + "Vertical"));
 		axisInputDirection.Normalize();

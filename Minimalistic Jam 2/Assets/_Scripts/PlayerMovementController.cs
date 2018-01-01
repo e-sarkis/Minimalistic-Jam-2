@@ -19,7 +19,7 @@ public class PlayerMovementController : MonoBehaviour
 
 		float zRot = Mathf.Atan2(playerController.axisInputDirection.x, -playerController.axisInputDirection.y) * Mathf.Rad2Deg;
 
-		if (!playerController.inputAim)
+		if (!playerController.inputAim && playerController.inputStrokeHeld)
 		{
 			if (playerController.axisInputDirection != Vector2.zero)
 			{
