@@ -46,8 +46,6 @@ public class GameController : MonoBehaviour
 	public void Score(int playerNum)
 	{
 		_playerNumsToScores[playerNum]++;
-		// TODO - Update ingame UI of Player in question
-		// Display Prompt for Rematch or Reset
 		UIMenuController.Instance.ShowMenu();
 		isGameOver = true;
 	}

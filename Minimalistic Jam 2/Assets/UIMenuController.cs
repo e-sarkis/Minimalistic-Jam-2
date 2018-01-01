@@ -90,12 +90,13 @@ public class UIMenuController : MonoBehaviour
 
 	void SelectOption()
 	{
+		string name = _optionCurrentSelection.name;
 		HideMenu();
-		if (_optionCurrentSelection == OptionRematchDisplayGameObject)
+		if (name == OptionRematchDisplayGameObject.name)
 		{
 			GameController.Instance.Rematch();
 		}
-		if (_optionCurrentSelection == OptionResetDisplayGameObject)
+		if (name == OptionResetDisplayGameObject.name)
 		{
 			GameController.Instance.Reset();
 		}
