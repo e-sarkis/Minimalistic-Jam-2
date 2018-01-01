@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameController.Joystick joy = GameController.Joystick.Joy1;
 
-	void Awake()
+	void Start()
 	{
 		joyStr = GameController.Instance.GetJoystickInputString(joy);
 	}
@@ -26,5 +26,10 @@ public class PlayerController : MonoBehaviour
 
 		axisInputDirection = new Vector2(Input.GetAxis(joyStr + "Horizontal"), Input.GetAxis(joyStr + "Vertical"));
 		axisInputDirection.Normalize();
+	}
+
+	public string GetJoyString()
+	{
+		return GameController.Instance.GetJoystickInputString(joy);
 	}
 }

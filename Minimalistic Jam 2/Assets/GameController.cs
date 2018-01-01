@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
 		// Singleton Initialization
-        if (_instance != null && _instance != this) { Destroy(this.gameObject); }
+        if (_instance != null && _instance != this) { Destroy(gameObject); }
 		else { _instance = this; }
 		// Joystick Input Initialization
 		_joyEnumToJoyInputStrings = new Dictionary<Joystick, string>();

@@ -22,7 +22,7 @@ public class OarAnimator : MonoBehaviour
 		{
 			spriteRenderer.sprite = spriteOarsStroke;
 		}
-		if (Input.GetButtonUp(playerController.joyStr + "Stroke"))
+		if (Input.GetButtonUp(playerController.GetJoyString() + "Stroke"))
 		{	
 			spriteRenderer.sprite = spriteOarsRest;
 		}
