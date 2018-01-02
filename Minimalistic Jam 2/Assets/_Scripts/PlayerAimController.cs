@@ -42,5 +42,6 @@ public class PlayerAimController : MonoBehaviour
 		projectileController.shooter = this.gameObject;
 		projectileController.direction = playerController.axisInputDirection;
 		projectileController.Launch();
+		playerController.timeSinceFiring = 0;
 	}
 }
